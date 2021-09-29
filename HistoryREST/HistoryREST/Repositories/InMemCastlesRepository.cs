@@ -5,7 +5,8 @@ using HistoryREST.Entries;
 
 namespace HistoryREST.Repositories
 {
-    public class InMemCastlesRepository
+
+    public class InMemCastlesRepository : ICastlesRepository
     {
         private readonly List<Castle> castles = new()
         {
@@ -31,7 +32,8 @@ namespace HistoryREST.Repositories
         }
 
 
-        }
+    }
 
 }
+
  

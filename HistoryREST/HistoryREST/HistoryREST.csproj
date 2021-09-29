@@ -8,10 +8,12 @@
     <None Remove="Controllers\" />
     <None Remove="Entries\" />
     <None Remove="Repositories\" />
+    <None Remove="DTOS\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Entries\" />
     <Folder Include="Repositories\" />
+    <Folder Include="DTOS\" />
   </ItemGroup>
 </Project>

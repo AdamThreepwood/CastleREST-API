@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using HistoryREST.DTOS;
 using HistoryREST.Entries;
 using HistoryREST.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -10,22 +12,23 @@ namespace HistoryREST.Controllers
     [Route("[controller]")]
     public class CastlesController : ControllerBase
     {
-        private readonly InMemCastlesRepository repository;
+        private readonly ICastlesRepository repository;
         
-        public CastlesController()
+        public CastlesController(ICastlesRepository repository)
         {
-            repository = new InMemCastlesRepository();
+            this.repository = repository;
         }
 
         [HttpGet]
-        public IEnumerable<Castle> GetCastles()
+        public IEnumerable<CastleDto> GetCastles()
         {
-            var castles = repository.GetCastles();
+            var castles = repository.GetCastles().Select(castle => castle.AsDto());
+
             return castles;
 
         }
         [HttpGet("{id}")]
-        public ActionResult<Castle> GetCastle(Guid id)
+        public ActionResult<CastleDto> GetCastle(Guid id)
         {
             var castle = repository.GetCastle(id);
 
@@ -35,7 +38,7 @@ namespace HistoryREST.Controllers
                 return NotFound();
             }
 
-            return castle;
+            return castle.AsDto();
         }
     }
 }
