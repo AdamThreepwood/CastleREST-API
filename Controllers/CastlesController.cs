@@ -75,7 +75,7 @@ namespace HistoryREST.Controllers
             return NoContent();
 
         }
-        [HttpDelete("{id}")]]
+        [HttpDelete("{id}")]
         public ActionResult DeleteCastle(Guid id)
         {
             var existingCastle = repository.GetCastle(id);

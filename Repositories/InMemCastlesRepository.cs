@@ -44,7 +44,7 @@ namespace HistoryREST.Repositories
 
         public void DeleteCastle(Guid id)
         {
-            var index = castles.FindIndex(existingCastle => existingCastle.Id == Id);
+            var index = castles.FindIndex(existingCastle => existingCastle.Id == id);
 
             castles.RemoveAt(index);
         }
